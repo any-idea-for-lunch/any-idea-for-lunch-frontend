@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>메뉴 추천 만다라트</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<section class="menu-recommend">
+  <div class="menu-card">
+    <h2 class="menu-recommend-title">메뉴 추천</h2>
+
+    <div class="mandal-container">
+      <div class="mandal-grid">
+        <div class="tile" onclick="goNext('면')">
+          <span class="main">면</span>
+          <span class="sub">내 주변 가게 1곳</span>
+        </div>
+        <div class="tile" onclick="goNext('밥')">
+          <span class="main">밥</span>
+          <span class="sub">내 주변 가게 1곳</span>
+        </div>
+        <div class="tile" onclick="goNext('빵')">
+          <span class="main">빵</span>
+          <span class="sub">내 주변 가게 1곳</span>
+        </div>
+
+        <div class="tile" onclick="goNext('A')">
+          <span class="main">A</span>
+          <span class="sub">내 주변 가게 1곳</span>
+        </div>
+        <div class="tile center" onclick="goNext('메뉴 추천')">
+          <span class="main">메뉴 추천</span>
+        </div>
+        <div class="tile" onclick="goNext('A')">
+          <span class="main">A</span>
+          <span class="sub">내 주변 가게 1곳</span>
+        </div>
+
+        <div class="tile" onclick="goNext('A')">
+          <span class="main">A</span>
+          <span class="sub">내 주변 가게 1곳</span>
+        </div>
+        <div class="tile" onclick="goNext('A')">
+          <span class="main">A</span>
+          <span class="sub">내 주변 가게 1곳</span>
+        </div>
+        <div class="tile" onclick="goNext('A')">
+          <span class="main">A</span>
+          <span class="sub">내 주변 가게 1곳</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function goNext(name) {
+        alert(name + " 타일 클릭됨 → 다음 페이지로 이동!");
+    }
+  </script>
+</section>
+
+</body>
+</html>
