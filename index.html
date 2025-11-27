@@ -12,21 +12,28 @@
 <body>
 
 <section class="menu-recommend">
+
+  <!-- 🟩 메뉴 추천 카드 -->
   <div class="menu-card">
     <h2 class="menu-recommend-title">메뉴 추천</h2>
+
     <div class="mandal-container">
       <div class="mandal-grid" id="mandalGrid"></div>
     </div>
   </div>
 
-  <!-- 지도 + 식당 목록 -->
-  <div class="map-store-section" id="mapStoreSection">
+  <!-- 🗺 지도 + 주변 가게 목록 -->
+  <div class="map-store-section hidden" id="mapStoreSection">
     <h3 id="selectedMenuTitle"></h3>
-    <div class="map" id="map">지도 영역</div>
+
+    <div class="map" id="map">
+      지도 영역
+    </div>
+
     <ul class="store-list" id="storeList"></ul>
   </div>
-</section>
 
+</section>
 
 <script src="script.js"></script>
 </body>
