@@ -54,8 +54,17 @@ function renderTiles() {
     const content = itemsArray[i >= 4 ? i - 1 : i] || `${selectedValue}-${i}`;
     tile.innerHTML = `<span class="main">${content}</span>`;
 
-    if (depth < 2) tile.onclick = () => enterTile(content);
-    else tile.onclick = () => {}; // depth2 이상 클릭 비활성
+    // 소분류 페이지 타일이면 글자 아래 "ㅁ 주변 가게: n곳" 추가
+    if (depth === 1) {
+      tile.innerHTML = `
+        <span class="main">${content}</span>
+        <span class="sub-text"><i class="fas fa-house"></i> 주변 가게: n곳</span>
+      `;
+      tile.onclick = () => showStores(content);
+    } else {
+      tile.innerHTML = `<span class="main">${content}</span>`;
+      tile.onclick = () => enterTile(content);
+    }
 
     grid.appendChild(tile);
   }
