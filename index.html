@@ -5,20 +5,28 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>메뉴 추천 만다라트</title>
   <link rel="stylesheet" href="style.css" />
+  <!-- FontAwesome CDN -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-..." crossorigin="anonymous" referrerpolicy="no-referrer" />
+
 </head>
 <body>
 
 <section class="menu-recommend">
   <div class="menu-card">
     <h2 class="menu-recommend-title">메뉴 추천</h2>
-
     <div class="mandal-container">
-      <div class="mandal-grid" id="mandalGrid">
-        <!-- JS에서 생성 -->
-      </div>
+      <div class="mandal-grid" id="mandalGrid"></div>
     </div>
   </div>
+
+  <!-- 지도 + 식당 목록 -->
+  <div class="map-store-section" id="mapStoreSection">
+    <h3 id="selectedMenuTitle"></h3>
+    <div class="map" id="map">지도 영역</div>
+    <ul class="store-list" id="storeList"></ul>
+  </div>
 </section>
+
 
 <script src="script.js"></script>
 </body>

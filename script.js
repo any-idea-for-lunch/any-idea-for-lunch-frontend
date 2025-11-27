@@ -21,8 +21,8 @@ let storeItemsMap = {
   // 나머지 메뉴도 필요시 추가 가능
 };
 
-let depth = 0;              // 0 = 루트, 1 = 1단계, 2 = 2단계
-let selectedValue = null;   // 현재 선택된 값
+let depth = 0;              // 0 = 대분류, 1 = 소분류
+let selectedValue = null;   // 현재 선택된 대분류
 
 function renderTiles() {
   const grid = document.getElementById("mandalGrid");
@@ -32,13 +32,13 @@ function renderTiles() {
     const tile = document.createElement("div");
     tile.classList.add("tile");
 
-    // 중앙
+    // 중앙 타일
     if (i === 4) {
       tile.classList.add("center");
       if (depth === 0) {
         tile.innerHTML = `<span class="main">메뉴 추천</span>`;
       } else {
-        tile.innerHTML = `<span class="main">${selectedValue}<br>(클릭해서 되돌아가기)</span>`;
+        tile.innerHTML = `<span class="main">${selectedValue}<br>(클릭해서 돌아가기)</span>`;
         tile.onclick = goBack;
       }
       grid.appendChild(tile);
@@ -46,19 +46,8 @@ function renderTiles() {
     }
 
     // 외곽 타일
-    let itemsArray = [];
-
-    if (depth === 0) {
-      itemsArray = rootItems;
-    } else if (depth === 1) {
-      itemsArray = subItemsMap[selectedValue] || Array(8).fill(0).map((_, idx) => `${selectedValue}-${idx}`);
-    } else if (depth === 2) {
-      itemsArray = storeItemsMap[selectedValue] || Array(8).fill(0).map((_, idx) => `${selectedValue}-${idx}`);
-    }
-
-    // index 조정 (i>=4이면 중앙 제외)
-    const content = itemsArray[i >= 4 ? i - 1 : i] || `${selectedValue}-${i}`;
-    tile.innerHTML = `<span class="main">${content}</span>`;
+    let itemsArray = depth === 0 ? rootItems : subItemsMap[selectedValue] || [];
+    const content = itemsArray[i >= 4 ? i - 1 : i] || "";
 
     // 소분류 페이지 타일이면 글자 아래 "ㅁ 주변 가게: n곳" 추가
     if (depth === 1) {
@@ -77,23 +66,39 @@ function renderTiles() {
 }
 
 function enterTile(value) {
-  if (depth >= 2) return;
   selectedValue = value;
-  depth++;
+  depth = 1;
   renderTiles();
 }
 
 function goBack() {
-  if (depth === 0) return;
-  depth--;
-  if (depth === 0) selectedValue = null;
-  else {
-    const parts = selectedValue.split("-");
-    parts.pop();
-    selectedValue = parts.join("-");
-  }
+  depth = 0;
+  selectedValue = null;
   renderTiles();
+
+  // 두 번째 페이지에서 열렸던 지도/가게 목록 숨김
+  const section = document.getElementById("mapStoreSection");
+  section.style.display = "none";
 }
 
-// 초기 실행
+function showStores(menuName) {
+  const section = document.getElementById("mapStoreSection");
+  const title = document.getElementById("selectedMenuTitle");
+  const list = document.getElementById("storeList");
+
+  title.textContent = `${menuName} 주변 가게`;
+  list.innerHTML = "";
+
+  let stores = storeItemsMap[menuName] || ["가게 정보 없음"];
+  stores.forEach(store => {
+    const li = document.createElement("li");
+    li.textContent = store;
+    list.appendChild(li);
+  });
+
+  section.style.display = "block";
+  section.scrollIntoView({ behavior: "smooth" });
+}
+
+// 초기 렌더링
 renderTiles();
