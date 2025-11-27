@@ -31,11 +31,15 @@ function renderTiles() {
     if (i === 4) {
       tile.classList.add("center");
       if (depth === 0) {
-        tile.innerHTML = `<span class="main">메뉴 추천</span>`;
-      } else {
-        tile.innerHTML = `<span class="main">${selectedValue}<br>(클릭해서 돌아가기)</span>`;
-        tile.onclick = goBack;
-      }
+  tile.innerHTML = `<span class="main">메뉴 추천</span>`;
+} else {
+  tile.innerHTML = `
+    <span class="main">${selectedValue}</span>
+    <span class="small-text"><i class="fas fa-arrow-left"></i> 클릭해서 돌아가기</span>
+  `;
+  tile.onclick = goBack;
+}
+
       grid.appendChild(tile);
       continue;
     }
