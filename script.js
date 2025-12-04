@@ -79,7 +79,7 @@ function goBack() {
 
   setTimeout(() => {
     section.style.display = "none";
-  }, 300); // CSS transition과 맞춤
+  }); // CSS transition과 맞춤
 
   depth = 0;
   selectedValue = null;
@@ -94,25 +94,44 @@ function showStores(menuName) {
 
   // 타이틀 + 재검색 버튼 포함
 title.innerHTML = `
-  ${menuName} 주변 가게
-  <span class="re-search-buttons">
-    <span class="btn-map">
-      <span class="emoji"><i class="fa-solid fa-location-dot"> </i></span>
-      <span class="text">  지도 상 위치에서 재검색</span>
+    ${menuName} 주변 가게
+    <span class="re-search-buttons">
+
+      <!-- 공유 버튼 -->
+      <span class="btn-share">
+        <i class="fa-solid fa-share-nodes"></i>
+        <span class="text">해당 목록 공유</span>
+      </span>
+
+      <!-- 지도 재검색 -->
+      <span class="btn-map">
+        <i class="fa-solid fa-location-dot"></i>
+        <span class="text">지도 상 위치에서 재검색</span>
+      </span>
+
+      <!-- 현재 위치 재검색 -->
+      <span class="btn-current">
+        <i class="fa-solid fa-arrows-rotate"></i>
+        <span class="text">현재 위치에서 재검색</span>
+      </span>
+
     </span>
-    <span class="btn-current">
-      <span class="emoji"><i class="fa-solid fa-arrows-rotate"></i></span>
-      <span class="text"> 현재 위치에서 재검색</span>
-    </span>
-  </span>
-`;
+  `;
+
 
 
   list.innerHTML = "";
   let stores = storeItemsMap[menuName] || ["가게 정보 없음"];
-  stores.forEach(store => {
+    stores.forEach(store => {
     const li = document.createElement("li");
-    li.textContent = store;
+
+    li.innerHTML = `
+      <span>${store}</span>
+      <span class="share-btn">
+        <i class="fa-solid fa-share-nodes"></i>
+      </span>
+    `;
+
     list.appendChild(li);
   });
 

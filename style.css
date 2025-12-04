@@ -169,9 +169,24 @@ body {
   gap: 6px;
   margin-left: 12px;
 }
+
+.re-search-buttons > .btn-share {
+  width: 105px;  /* 지도 상 위치 버튼 너비 */
+  border: 1px solid #273552;
+}
+
+.re-search-buttons .btn-share i {
+  margin-right: 8px;   /* 아이콘과 텍스트 사이 간격 */
+}
+
+
 .re-search-buttons > .btn-map {
   width: 155px;  /* 지도 상 위치 버튼 너비 */
   border: 1px solid #273552;
+}
+
+.re-search-buttons .btn-map i {
+  margin-right: 6px;   /* 아이콘과 텍스트 사이 간격 */
 }
 
 .re-search-buttons > .btn-current {
@@ -179,14 +194,8 @@ body {
   border: 1px solid #273552;
 }
 
-/* 오른쪽 버튼(.btn-current) 이모지와 텍스트 간격 조정 */
-.re-search-buttons > .btn-current .emoji {
-  margin-right: 10px;  /* 이모지와 텍스트 사이 간격 넓히기 */
-}
-
-/* 오른쪽 버튼(.btn-current) 내부 텍스트 오른쪽 패딩 줄이기 */
-.re-search-buttons > .btn-current .text {
-  padding-right: 4px;  /* 기본 padding-right가 있을 경우 조정 */
+.re-search-buttons .btn-current i {
+  margin-right: 6px;   /* 아이콘과 텍스트 사이 간격 */
 }
 
 .re-search-buttons > span {
@@ -222,4 +231,52 @@ body {
   background: #f0f0f0;
   box-shadow: 0 3px 5px rgba(0,0,0,0.15);
   transform: translateY(-1px);
+}
+
+
+
+
+.store-list li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 16px;
+  background: #fff;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.08);
+  font-size: 15px;
+}
+
+.store-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+.store-info {
+    flex: 1;
+    min-width: 0;
+}
+
+.share-btn {
+    border: 1px solid #273552;
+    background: #fff;
+    color: #273552;
+    border-radius: 6px;
+    padding: 6px 8px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width:20px;
+    height: 20px;
+    font-size: 14px;
+    transition: background 0.2s ease, transform 0.15s ease;
+}
+
+.share-btn:hover {
+    background: #f0f3ff;
+    transform: translateY(-1px);
 }
