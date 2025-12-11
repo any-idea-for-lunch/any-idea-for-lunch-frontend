@@ -132,6 +132,7 @@ body {
   opacity: 0;
   transform: translateY(40px);
   pointer-events: none;
+  display: none;
 }
 
 .show {
