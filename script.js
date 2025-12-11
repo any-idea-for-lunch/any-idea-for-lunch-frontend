@@ -3,21 +3,39 @@ let rootItems = ["밥", "면", "빵/과자", "국/찌개", "고기", "1", "2", "
 
 // 2. 소분류 메뉴
 let subItemsMap = {
-  "밥": ["볶음밥/오므라이스","카레","덮밥", "0","1","2","3","4"],
-  "면": ["국수","라면","스파게티","파스타","우동","냉모밀","0","1"],
-  "빵/과자": ["피자","샌드위치","0","1","2","3","4","5"],
-  "국/찌개": ["순두부찌개","부대찌개","김치찌개, 된장찌개","국밥","육개장","해장국","0","1"],
-  "고기": ["돈까스","불고기/제육볶음","스테이크","갈비찜","삼계탕","수육","치킨","순대"]
+  밥: ["볶음밥/오므라이스", "카레", "덮밥", "0", "1", "2", "3", "4"],
+  면: ["국수", "라면", "스파게티", "파스타", "우동", "냉모밀", "0", "1"],
+  "빵/과자": ["피자", "샌드위치", "0", "1", "2", "3", "4", "5"],
+  "국/찌개": [
+    "순두부찌개",
+    "부대찌개",
+    "김치찌개, 된장찌개",
+    "국밥",
+    "육개장",
+    "해장국",
+    "0",
+    "1",
+  ],
+  고기: [
+    "돈까스",
+    "불고기/제육볶음",
+    "스테이크",
+    "갈비찜",
+    "삼계탕",
+    "수육",
+    "치킨",
+    "순대",
+  ],
 };
 
 // 3. 소분류 메뉴별 주변 가게 데이터
 let storeItemsMap = {
-  "라면": ["라면가게 A","라면가게 B","라면가게 C"],
-  "우동": ["우동집 1","우동집 2"]
+  라면: ["라면가게 A", "라면가게 B", "라면가게 C"],
+  우동: ["우동집 1", "우동집 2"],
 };
 
-let depth = 0;              // 0 = 대분류, 1 = 소분류
-let selectedValue = null;   // 현재 선택된 대분류
+let depth = 0; // 0 = 대분류, 1 = 소분류
+let selectedValue = null; // 현재 선택된 대분류
 
 // ================== 렌더링 ==================
 
@@ -118,11 +136,9 @@ function showStores(menuName) {
     </span>
   `;
 
-
-
   list.innerHTML = "";
   let stores = storeItemsMap[menuName] || ["가게 정보 없음"];
-    stores.forEach(store => {
+  stores.forEach((store) => {
     const li = document.createElement("li");
 
     li.innerHTML = `
@@ -145,9 +161,12 @@ function showStores(menuName) {
   section.classList.add("show");
 
   // 스크롤 이동
-  section.scrollIntoView({
+  // 원하는 위치 = 섹션의 top - 여유값(120px 정도)
+  const targetY = section.getBoundingClientRect().top + window.scrollY - 140;
+
+  window.scrollTo({
+    top: targetY,
     behavior: "smooth",
-    block: "start"
   });
 }
 
