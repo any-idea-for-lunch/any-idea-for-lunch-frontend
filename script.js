@@ -93,7 +93,7 @@ function showStores(menuName) {
   const list = document.getElementById("storeList");
 
   // 타이틀 + 재검색 버튼 포함
-title.innerHTML = `
+  title.innerHTML = `
     ${menuName} 주변 가게
     <span class="re-search-buttons">
 
