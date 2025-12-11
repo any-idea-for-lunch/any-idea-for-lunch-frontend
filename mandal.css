@@ -6,17 +6,15 @@ body {
 }
 
 .menu-card {
-    margin-bottom: 16px;
-    border-radius: 12px;
-    background-color: #fff;
-    box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.12);
-    margin-left: 24px;
+  margin-bottom: 16px;
+  border-radius: 12px;
+  background-color: #fff;
+  
 }
 
 .menu-recommend-title {
     margin-top: 1px;
     margin-bottom: 6px;
-    margin-left: 24px;
     font-weight: bold;
     font-size: 17px;
 }
@@ -27,19 +25,16 @@ body {
 }
 
 .mandal-container {
-  width: 900px;
   height: 350px;
   background: #e5e5e5;
-  padding: 20px;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 0 auto;
 }
 
 .mandal-grid {
-  width: 360px;
-  height: 360px;
+  width: 314px;
+  height: 314px;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(3, 1fr);
